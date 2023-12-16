@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def clean_data(data: pd.DataFrame) -> pd.DataFrame:
     #extraer la data
-    data=pd.read_excel("data.xlsx")
+    data=pd.read_excel("raw_data/data.xlsx")
     #data=pd.read_excel("/Users/juancorreav/code/frtm29/EasyDolar/raw_data/data.xlsx")
     data['variacion'] = data['variacion'].str.rstrip('%').str.replace(',', '.').astype('float') / 100.0
     # Convertir la columna "date" a formato de fecha
