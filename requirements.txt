@@ -1,2 +1,6 @@
 numpy
 pandas
+# API
+fastapi
+pytz
+uvicorn
