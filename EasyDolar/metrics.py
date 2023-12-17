@@ -1,6 +1,7 @@
 #Funcion que debe recibir los target(dolar a predecir), el dolar del dia anterior y el dolar del día siguiente y el dolar siguiente
 #El x es el close de nuestra data, el y_real es el target y el y_pred es la predicción de nuestro modelo
 import numpy as np
+from sklearn.metrics import make_scorer
 def directional_accuracy_f(y_real, y_pred, x):
     direction_real = np.sign(y_real - x)
     direction_pred = np.sign(y_pred - x)
