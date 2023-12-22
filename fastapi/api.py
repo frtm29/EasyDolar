@@ -1,7 +1,7 @@
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from EasyDolar.archivo_python_modelo_predicción import load_model #actualizar con archivo modelo
+from model import load_model #actualizar con archivo modelo
 
 app = FastAPI()
 
