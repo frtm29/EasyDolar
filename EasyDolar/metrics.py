@@ -13,7 +13,6 @@ def retornos_f (y_real,y_pred,x):
     direction_pred = np.sign(y_pred - x)
     retorno=np.sum((direction_real*direction_pred)*np.abs(y_real-x))
     return retorno
-<<<<<<< HEAD
 def retorno_solo_comprar(y_real,y_pred,x):
     retorno=0
     direction_pred = np.sign(y_pred - x)
@@ -21,7 +20,3 @@ def retorno_solo_comprar(y_real,y_pred,x):
     retorno = np.sum((direction_real * direction_pred * np.abs(y_real - x))[direction_pred > 0])
     return retorno
 #retornos=make_scorer(retornos_f,greater_is_better=True)
-=======
-retornos=make_scorer(retornos_f,greater_is_better=True)
-
->>>>>>> a85549313174242ccf2a8f7a64085a38f3286d74

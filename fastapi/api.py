@@ -16,7 +16,7 @@ app.add_middleware(
 app.state.model = load_model() #debemos cargar el modelo entrenado como load_model()para despues dejarlo resitrado en lña app
 
 @app.get('/predict')
-def predict(email: str, date: str):
+def predict(start_date: str, end_date: str):
     X_pred = pd.DataFrame(locals(), index=[0])
     model = app.state.model #Podria faltar prepropesar los datos, haciendo alguna funciona que indique de que forma es factible pasar os datos, sino indica error
     y_pred = model.predict(X_pred)
