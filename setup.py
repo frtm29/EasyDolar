@@ -16,4 +16,4 @@ setup(
     install_requires=requirements,
     packages=find_packages(),
     zip_safe=False
-)
+    )

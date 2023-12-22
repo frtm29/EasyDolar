@@ -3,10 +3,11 @@ import matplotlib.pyplot as plt
 import os
 
 def clean_data():
-    root_dir = os.path.dirname(os.path.dirname(__file__))
-    csv_path = os.path.join(root_dir, "raw_data")
+    current_dir = os.getcwd()
 
-    cleaned_data = pd.read_excel(os.path.join(csv_path, "data.xlsx"))
+    file_path = os.path.join(current_dir, "raw_data", "data.xlsx") #desde /Users/juancorrea/code/frtm29/EasyDolar
+
+    cleaned_data = pd.read_excel(file_path)
 
     # Limpiar la columna 'variacion'
     cleaned_data['variacion'] = cleaned_data['variacion'].str.rstrip('%').str.replace(',', '.').astype('float') / 100.0
@@ -26,3 +27,6 @@ def clean_data():
     print("✅ data cleaned")
 
     return cleaned_data
+
+
+print(clean_data())
