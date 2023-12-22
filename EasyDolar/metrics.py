@@ -14,3 +14,4 @@ def retornos_f (y_real,y_pred,x):
     retorno=np.sum((direction_real*direction_pred)*np.abs(y_real-x))
     return retorno
 retornos=make_scorer(retornos_f,greater_is_better=True)
+
