@@ -28,6 +28,7 @@ def clean_data():
     print("✅ data cleaned")
 
     return cleaned_data
+#Esta es finalmente la data
 
 
 print(clean_data())
