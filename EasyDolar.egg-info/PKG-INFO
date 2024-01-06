@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: EasyDolar
+Version: 0.1
+Summary: Modelo predicción tipo de cambio USD/CLP
+Author: EasyDolar
+Author-email: jdcorrea1@miuandes.cl
+License: MIT
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: statsmodels
+Requires-Dist: fastapi
+Requires-Dist: pytz
+Requires-Dist: uvicorn
+Requires-Dist: streamlit

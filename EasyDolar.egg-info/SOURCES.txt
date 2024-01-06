@@ -1,0 +1,8 @@
+README.md
+setup.py
+EasyDolar.egg-info/PKG-INFO
+EasyDolar.egg-info/SOURCES.txt
+EasyDolar.egg-info/dependency_links.txt
+EasyDolar.egg-info/not-zip-safe
+EasyDolar.egg-info/requires.txt
+EasyDolar.egg-info/top_level.txt
