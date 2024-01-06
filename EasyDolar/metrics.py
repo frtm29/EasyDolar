@@ -20,4 +20,13 @@ def retorno_solo_comprar(data):
 
     retorno = np.sum((direction_real * direction_pred * np.abs(data.close - data.anterior))[direction_pred > 0])
     return retorno
+def suma_de_retornos_diarios(data):
+    direction_real = np.sign(data.close - data.anterior)
+    direction_pred = np.sign(data.predictions - data.anterior)
+
+    retorno = np.sum((direction_real * direction_pred * (np.abs(data.close - data.anterior)/data.anterior))[direction_pred > 0])
+    return retorno
 #retornos=make_scorer(retornos_f,greater_is_better=True)
+
+def buy_and_hold(data):
+    return (data.close.iloc[-1]/data.close.iloc[0])-1
