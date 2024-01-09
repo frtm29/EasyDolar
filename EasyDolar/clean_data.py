@@ -23,11 +23,12 @@ def clean_data():
     cleaned_data.sort_index(inplace=True)
 
     # Crear la columna "target" como el valor de "close" desplazado
-    cleaned_data["target"] = cleaned_data["close"].shift(-1)
+    cleaned_data["anterior"] = cleaned_data["close"].shift(1)
 
     print("✅ data cleaned")
 
     return cleaned_data
+#Esta es finalmente la data
 
 
 print(clean_data())
