@@ -4,6 +4,7 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 # Asumiendo que el servidor FastAPI está corriendo en localhost en el puerto 8000
 API_URL = "http://localhost:8000/predict"
@@ -44,12 +45,39 @@ def main():
         st.metric(label='Estrategia', value=f'{data[:,2].mean():.2f}')
 
         # Mostrar gráfico
-        fig, ax = plt.subplots()
-        ax.plot(dates, data)
-        ax.set_xlabel('Date')
-        ax.set_ylabel('Value')
-        ax.legend(['Accuracy', 'Buy-Hold', 'Estrategia'])
+        # Generación de datos
+        dates = pd.date_range(start='2022-12-01', periods=120, freq='D')
+        accuracy = np.random.normal(0.5, 0.1, size=dates.size).cumsum() + 100  # Datos para 'Accuracy'
+        buy_hold = np.random.normal(0.3, 0.1, size=dates.size).cumsum() + 100   # Datos para 'Buy-Hold'
+        estrategia = np.random.normal(0.4, 0.1, size=dates.size).cumsum() + 100 # Datos para 'Estrategia'
+
+        # Creación del gráfico
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(dates, accuracy, label='Accuracy', color='green', linewidth=2)
+        ax.plot(dates, buy_hold, label='Buy-Hold', color='red', linewidth=2)
+        ax.plot(dates, estrategia, label='Estrategia', color='blue', linewidth=2)
+
+        # Resaltar el último valor de cada serie
+        ax.text(dates[-1], accuracy[-1], 'Accuracy', color='green', ha='right')
+        ax.text(dates[-1], buy_hold[-1], 'Buy-Hold', color='red', ha='right')
+        ax.text(dates[-1], estrategia[-1], 'Estrategia', color='blue', ha='right')
+
+        # Decoración del gráfico
+        ax.set_title('Invierte en el Fondo Mutuo BTG Pactual Chile Acción', color='white')
+        ax.set_xlabel('Date', color='white')  # Etiqueta del eje x
+        ax.set_ylabel('Value', color='white')  # Etiqueta del eje y
+        ax.legend()
+        ax.grid(True)
+        ax.set_facecolor('#003366')  # Color de fondo del eje
+        fig.patch.set_facecolor('#003366')  # Color de fondo de la figura
+        ax.tick_params(axis='x', colors='white')  # Color de las etiquetas del eje x
+        ax.tick_params(axis='y', colors='white')  # Color de las etiquetas del eje y
+        ax.xaxis.set_major_locator(mdates.MonthLocator())
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
+
+        # Mostrar el gráfico en Streamlit
         st.pyplot(fig)
+
     else:
         st.error('La fecha final debe ser posterior a la fecha de inicio.')
 
