@@ -41,12 +41,12 @@ def main():
     with col1:
         start_date = st.date_input('Fecha de Inicio', default_start_date, min_value=min_date, max_value=max_date) #date.today()
     with col2:
-        end_date = st.date_input('Fecha Fin', default_end_date) #date.today()
+        end_date = st.date_input('Fecha Fin', default_end_date, min_value=min_date, max_value=max_date) #date.today()
 
     if start_date <= end_date:
         filtered_data = filter_data_by_date(data, pd.to_datetime(start_date), pd.to_datetime(end_date))
 
-        if st.button('Presentar métricas'):
+        if st.button('Métricas'):
 
             # Cálculo de métricas
             #accuracy = directional_accuracy_f(filtered_data)
