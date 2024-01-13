@@ -23,7 +23,10 @@ def main():
 
     #st.title('Easy Dolar')
     # Usar la imagen del logo en lugar del título
-    st.image('EasyDolar/EasyDolarlogo2.png', width=400)  # Ajusta el ancho según tus necesidades
+    #st.image('EasyDolar/EasyDolarlogo2.png', width=400)  # Ajusta el ancho según tus necesidades
+    st_cols = st.columns([2, 6, 1])
+    with st_cols[1]:
+        st.image('EasyDolar/EasyDolarlogo2.png', width=400)
 
     # Carga de datos
     data = load_data('EasyDolar/predicciones.csv')
