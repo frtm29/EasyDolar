@@ -1,22 +1,14 @@
 import pandas as pd
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from EasyDolar.archivo_python_modelo_predicción import load_model #actualizar con archivo modelo
+from model import realizar_prediccion_sarima_completa, evaluar_y_graficar_predicciones
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
 
-app.state.model = load_model() #debemos cargar el modelo entrenado como load_model()para despues dejarlo resitrado en lña app
+app.state.model = realizar_prediccion_sarima_completa()
 
 @app.get('/predict')
-def predict(email: str, date: str):
+def predict(start_date: str, end_date: str):
     X_pred = pd.DataFrame(locals(), index=[0])
     model = app.state.model #Podria faltar prepropesar los datos, haciendo alguna funciona que indique de que forma es factible pasar os datos, sino indica error
     y_pred = model.predict(X_pred)

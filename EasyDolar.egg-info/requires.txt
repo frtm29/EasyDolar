@@ -1,9 +1,7 @@
 numpy
 pandas
 statsmodels
-# API
 fastapi
 pytz
 uvicorn
 streamlit
-matplotlib
