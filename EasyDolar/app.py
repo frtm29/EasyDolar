@@ -65,15 +65,17 @@ def main():
         plt.figure(figsize=(10, 6))
         # Graficar las series con etiquetas y colores
         plt.plot(filtered_data['date'], filtered_data['close'], label='Real', color='red', linewidth=2)
-        plt.plot(filtered_data['date'], filtered_data['predictions'], label='Predicción', color='green', linewidth=2)
+        plt.plot(filtered_data['date'], filtered_data['predictions'], label='Predicción', color='green',linewidth=2)
+        #label='Real', color='red',
+        #label='Predicción', color='green',
         # Resaltar el valor de cada serie
-        plt.text(filtered_data['date'].iloc[-1], filtered_data['close'].iloc[-1], 'Real', color='red', ha='right', fontsize=15)
-        plt.text(filtered_data['date'].iloc[-1], filtered_data['predictions'].iloc[-1], 'Predicción', color='green', ha='right', fontsize=15)
+        #plt.text(filtered_data['date'].iloc[-1], filtered_data['close'].iloc[-1], 'Real', color='red', ha='right', fontsize=15)
+        #plt.text(filtered_data['date'].iloc[-1], filtered_data['predictions'].iloc[-1], 'Predicción', color='green', ha='right', fontsize=15)
         # Plotear el gráfico
         plt.title('Predicciones vs Valores Reales', color='white', fontsize=20)
         #plt.xlabel('Fecha', color='white')
         #plt.ylabel('Valor', color='white')
-        #plt.legend()
+        plt.legend()
         plt.grid(True, axis='y')
         plt.gca().set_facecolor('#000000')  # Establecer el color de fondo del eje
         plt.gcf().set_facecolor('#000000')  # Establecer el color de fondo de la figura
@@ -82,6 +84,10 @@ def main():
         plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
         plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
         plt.tight_layout()
+
+        # Configuración de la leyenda con fondo negro y letras blancas
+        leg = plt.legend(facecolor='black', edgecolor='none', fontsize='large')  # Fondo negro
+        plt.setp(leg.get_texts(), color='white')  # Letras blancas
         # Mostrar el gráfico en Streamlit
         st.pyplot(plt)
 
