@@ -34,9 +34,9 @@ def main():
     col1, col2 = st.columns(2)
 
     # Establece la fecha de inicio por defecto como 30 días antes de la fecha actual
-    default_start_date = date.today() - timedelta(days=90)
+    default_start_date = date(2023,12,15) - timedelta(days=90)
     # Establece la fecha final por defecto como la fecha actual
-    default_end_date = date.today()
+    default_end_date = date(2023,12,15)
     # Establece el rango mínimo para el selector de fecha de inicio
     min_date = date(2000, 3, 1)
     max_date = date(2024, 12, 31)
