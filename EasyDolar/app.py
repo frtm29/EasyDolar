@@ -9,12 +9,14 @@ from metrics import directional_accuracy_f, buy_and_hold, suma_de_retornos_diari
 from datetime import date, timedelta
 
 # Cargar el archivo CSV
+@st.cache_data
 def load_data(csv_path):
     data = pd.read_csv(csv_path)
     data['date'] = pd.to_datetime(data['date'])
     return data
 
 # Actualización de la función para filtrar datos por fecha
+@st.cache_data
 def filter_data_by_date(data, start_date, end_date):
     mask = (data['date'] >= start_date) & (data['date'] <= end_date)
     return data.loc[mask]
